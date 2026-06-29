@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>应籽言转盘</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css?v=20260629-layout8" />
+  </head>
+  <body>
+    <main class="magazine-shell">
+      <section class="cover" aria-labelledby="pageTitle">
+        <img class="cover-photo tone-flower" src="assets/yingziyan-flower.png" alt="应籽言照片" />
+        <div class="cover-shade"></div>
+
+        <header class="masthead">
+          <a href="#" aria-label="应籽言转盘首页">YZY</a>
+          <nav aria-label="页面导航">
+            <a href="#wheel">转盘</a>
+          </nav>
+          <div class="masthead-actions">
+            <button id="changeCoverButton" type="button">切换封面</button>
+            <button id="viewBackgroundButton" type="button">查看背景图</button>
+            <button id="openEditorButton" type="button">编辑转盘</button>
+            <button id="saveTopButton" type="button">保存</button>
+          </div>
+        </header>
+
+        <section class="cover-type">
+          <p>SNH48 · PURPLE SUPPORT</p>
+          <h1 id="pageTitle">ZIYAN<br />ISSUE</h1>
+          <div class="bio-strip">
+            <span>应籽言</span>
+            <span>07.19</span>
+            <span>167cm</span>
+            <span>SNH48 二十二期生</span>
+          </div>
+          <div class="cover-notes" aria-label="杂志封面信息">
+            <span>VOL. 0719</span>
+            <span>PURPLE EDITION</span>
+            <span>SPIN SPECIAL</span>
+          </div>
+        </section>
+
+        <section class="wheel-feature" id="wheel" aria-labelledby="wheelTitle">
+          <div class="insert-kicker">
+            <span>WHEEL FEATURE</span>
+            <span>PAGE 08</span>
+          </div>
+          <div class="feature-copy">
+            <p class="eyebrow">Editable Picks</p>
+            <h2 id="wheelTitle">今天交给紫色转盘</h2>
+            <span id="saveState">已载入默认模板</span>
+          </div>
+          <div class="wheel-wrap">
+            <canvas id="wheelCanvas" width="520" height="520" aria-label="可编辑概率转盘"></canvas>
+            <div class="pointer" aria-hidden="true"></div>
+            <button class="wheel-center" id="centerSpinButton" type="button" aria-label="点击转动转盘">
+              <span>Spin</span>
+            </button>
+          </div>
+
+          <div class="result-card">
+            <p class="eyebrow">本次结果</p>
+            <strong id="resultText">等待转动</strong>
+          </div>
+
+          <div class="actions">
+            <button class="primary" id="spinButton" type="button">开始转动</button>
+            <button class="secondary" id="shuffleButton" type="button">随机顺序</button>
+          </div>
+        </section>
+      </section>
+
+      <dialog class="editor-dialog" id="editorDialog">
+        <button id="closeEditorButton" class="close" type="button" aria-label="关闭编辑器">关闭</button>
+        <section class="editor-page" id="editor" aria-labelledby="editorTitle">
+          <div>
+            <p class="eyebrow">Wheel Editor</p>
+            <h2 id="editorTitle">编辑转盘</h2>
+          </div>
+          <div class="active-editor">
+            <label for="activeLabelInput">当前选项</label>
+            <textarea id="activeLabelInput" rows="2" maxlength="40"></textarea>
+            <div class="active-fields">
+              <label>
+                <span>颜色</span>
+                <input id="activeColorInput" type="color" />
+              </label>
+              <label>
+                <span>概率 %</span>
+                <input id="activeProbabilityInput" type="number" min="0" max="100" step="0.1" />
+              </label>
+            </div>
+          </div>
+          <div class="probability-total" id="probabilityTotal">概率合计 100%</div>
+          <div class="option-list" id="optionList"></div>
+          <div class="editor-actions">
+            <button class="secondary" id="addButton" type="button">添加选项</button>
+            <button class="primary" id="saveButton" type="button">保存我的转盘</button>
+            <button class="text-button" id="resetButton" type="button">重置默认</button>
+          </div>
+        </section>
+      </dialog>
+    </main>
+
+    <dialog class="background-dialog" id="backgroundDialog">
+      <button id="closeBackgroundButton" class="close" type="button" aria-label="关闭背景图">关闭</button>
+      <img id="backgroundDialogImage" src="assets/yingziyan-lounge.jpg" alt="当前背景图" />
+    </dialog>
+
+    <dialog class="result-dialog" id="resultDialog">
+      <button id="closeDialog" class="close" type="button" aria-label="关闭结果">关闭</button>
+      <img src="assets/yingziyan-flower.png" alt="应籽言结果展示" />
+      <p class="eyebrow">本次转盘结果</p>
+      <h2 id="dialogResult">等待转动</h2>
+      <button class="primary" id="spinAgainButton" type="button">再转一次</button>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
